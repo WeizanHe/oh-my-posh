@@ -1,0 +1,153 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "black": "#111111",
+    "white": "#f7f7f7"
+  },
+  "console_title_template": "{{if .Root}}[root] {{end}}{{.HostName}}:<{{.Folder}}>",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "options": {
+            "linux": "\uf17c",
+            "macos": "\uf179",
+            "ubuntu": "\uf31b",
+            "windows": "\uf871"
+          },
+          "template": " \uf31b\u2800",
+          "foreground": "p:white",
+          "background": "#464646",
+          "type": "os",
+          "style": "plain"
+        },
+        {
+          "template": " \uf489 {{.Name}}\u2800",
+          "foreground": "p:black",
+          "background": "p:white",
+          "type": "shell",
+          "style": "plain"
+        },
+        {
+          "template": " \uf2c0 {{.UserName}}@{{.HostName}}\u2800",
+          "foreground": "p:black",
+          "background": "#ffe093",
+          "type": "session",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "display_mode": "environment",
+            "fetch_virtual_env": true,
+            "home_enabled": true
+          },
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
+          "foreground": "p:black",
+          "background": "#fff457",
+          "type": "python",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "branch_icon": " \ue0a0 "
+          },
+          "template": "{{.HEAD}}\u2800",
+          "foreground": "p:black",
+          "background": "#ffffd6",
+          "type": "git",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "options": {
+            "style": "austin",
+            "threshold": 0
+          },
+          "template": "{{.FormattedMs}}",
+          "foreground": "#47866b",
+          "background": "transparent",
+          "type": "executiontime",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "time_format": "15:04"
+          },
+          "template": "<p:white> · </>{{.CurrentDate | date .Format}}",
+          "foreground": "#47866b",
+          "background": "transparent",
+          "type": "time",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "options": {
+            "folder_icon": "\uf07b",
+            "folder_separator_template": "<#93d0ff> \uf105 </>",
+            "home_icon": "\uf015",
+            "style": "agnoster_full"
+          },
+          "template": "\u2514\u2500</> {{.Path}} ",
+          "background": "transparent",
+          "type": "path",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "template": "\uf4bc {{ round .PhysicalPercentUsed .Precision }}% | ",
+          "foreground": "#72863c",
+          "background": "transparent",
+          "type": "sysinfo",
+          "style": "plain"
+        },
+        {
+          "template": "\uefc5 {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1000000000.0) }}GB",
+          "foreground": "#72863c",
+          "background": "transparent",
+          "type": "sysinfo",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "options": {
+            "always_enabled": true
+          },
+          "template": "❯",
+          "background": "transparent",
+          "type": "text",
+          "style": "plain",
+          "foreground_templates": [
+            "{{if gt .Code 0}}#ff3030{{end}}"
+          ]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
