@@ -16,16 +16,16 @@
         {
           "foreground": "#26C6DA",
           "style": "plain",
-          "template": " {{ .UserName }}: ",
+          "template": " {{ .HostName }}:",
           "type": "session"
         },
         {
           "foreground": "lightGreen",
           "options": {
-            "style": "folder"
+            "style": "agnoster_full"
           },
           "style": "plain",
-          "template": "{{ .Path }} ",
+          "template": "{{ .Path }}",
           "type": "path"
         },
         {
@@ -37,6 +37,10 @@
           "type": "git"
         },
         {
+          "options": {
+            "fetch_version": true,
+            "home_enabled": true
+          },
           "foreground": "#906cff",
           "style": "powerline",
           "template": "[\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}] ",
