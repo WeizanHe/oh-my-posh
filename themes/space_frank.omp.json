@@ -7,7 +7,7 @@
         {
           "foreground": "#26C6DA",
           "options": {
-            "macos": "mac"
+            "macos": "\ue711"
           },
           "style": "plain",
           "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}",
